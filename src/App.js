@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header"
+import Footer from "./components/Footer"
 import ContactPage from "./pages/ContactPage";
 import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage"
 import CampsitesDirectoryPage from "./pages/CampsitesDirectoryPage";
 import CampsiteDetailPage from "./pages/CampsiteDetailPage";
 import { fetchCampsites } from "./features/campsites/campsitesSlice";
-import AboutPage from "./pages/AboutPage"
-import Header from "./components/Header";
-import Footer from "./components/Footer"
-
+import { fetchPartners } from "./features/partners/partnerSlice";
+import { fetchPromotions } from "./features/promotions/promotionsSlice";
 import "./App.css"
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchCampsites());
+    dispatch(fetchPartners());
+    dispatch(fetchPromotions())
   }, [dispatch])
   
   
